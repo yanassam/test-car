@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import advertsReducer from "./reducers/advertsReducer";
 
 const store = configureStore({
   reducer: {
-    //  редюсеры здесь
+    adverts: advertsReducer,
   },
 });
 
