@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAdverts } from "../../redux/reducers/advertsReducer";
 import {
@@ -9,6 +9,7 @@ import {
 import CarCard from "./CarCard";
 
 import s from "./CarCatalog.module.css";
+import CarModal from "../../components/CarModal/CarModal";
 
 const CarCatalog = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,24 @@ const CarCatalog = () => {
   const status = useSelector(selectStatus);
   const error = useSelector(selectError);
 
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
+
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchAdverts());
     }
   }, [status, dispatch]);
+
+  const openModal = (car) => {
+    setSelectedCar(car);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedCar(null);
+  };
 
   return (
     <div className={s.catalogContainer}>
@@ -30,8 +44,17 @@ const CarCatalog = () => {
       {status === "succeeded" && (
         <div className={s.catalogFlex}>
           {adverts.map((car) => (
-            <CarCard key={car.id} car={car} />
+            <CarCard
+              key={car.id}
+              car={car}
+              onLearnMore={() => openModal(car)}
+            />
           ))}
+          <CarModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            car={selectedCar}
+          />
         </div>
       )}
     </div>

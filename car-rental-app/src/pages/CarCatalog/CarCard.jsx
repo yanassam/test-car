@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+
 import s from "./CarCard.module.css";
 
-const CarCard = ({ car }) => {
+const CarCard = ({ car, onLearnMore }) => {
   return (
     <div className={s.carCard}>
       <img
@@ -23,10 +25,17 @@ const CarCard = ({ car }) => {
           <li>{car.id}</li>
           <li>{car.functionalities[0]}</li>
         </ul>
-        <button className={s.button}>Learn more</button>
+        <button className={s.button} onClick={onLearnMore}>
+          Learn more
+        </button>
       </div>
     </div>
   );
+};
+
+CarCard.propTypes = {
+  car: PropTypes.object.isRequired,
+  onLearnMore: PropTypes.func.isRequired,
 };
 
 export default CarCard;
