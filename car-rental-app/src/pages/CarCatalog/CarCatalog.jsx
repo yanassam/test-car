@@ -7,9 +7,10 @@ import {
   selectStatus,
 } from "../../redux/selectors";
 import CarCard from "./CarCard";
+import CarModal from "../../components/CarModal/CarModal";
+import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 
 import s from "./CarCatalog.module.css";
-import CarModal from "../../components/CarModal/CarModal";
 
 const CarCatalog = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const CarCatalog = () => {
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(12);
 
   useEffect(() => {
     if (status === "idle") {
@@ -36,26 +38,35 @@ const CarCatalog = () => {
     setSelectedCar(null);
   };
 
+  const loadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 12);
+  };
+
   return (
     <div className={s.catalogContainer}>
       <h1>Каталог автомобілів</h1>
       {status === "loading" && <p>Загрузка...</p>}
       {status === "failed" && <p>Ошибка при загрузке данных: {error}</p>}
       {status === "succeeded" && (
-        <div className={s.catalogFlex}>
-          {adverts.map((car) => (
-            <CarCard
-              key={car.id}
-              car={car}
-              onLearnMore={() => openModal(car)}
-            />
-          ))}
+        <>
+          <div className={s.catalogFlex}>
+            {adverts.slice(0, visibleCount).map((car) => (
+              <CarCard
+                key={car.id}
+                car={car}
+                onLearnMore={() => openModal(car)}
+              />
+            ))}
+          </div>
+          {visibleCount < adverts.length && (
+            <LoadMoreBtn onLoadMore={loadMore} />
+          )}
           <CarModal
             isOpen={isModalOpen}
             onClose={closeModal}
             car={selectedCar}
           />
-        </div>
+        </>
       )}
     </div>
   );
