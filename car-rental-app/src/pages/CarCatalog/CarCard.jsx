@@ -1,17 +1,15 @@
 import PropTypes from "prop-types";
 
 import s from "./CarCard.module.css";
-import activeSvg from "../../image/hart.svg";
+import activeSvg from "../../image/active.svg";
+import inactiveSvg from "../../image/hart.svg";
 
 const CarCard = ({ car, onLearnMore, onToggleFavorite, isFavorite }) => {
   return (
     <div className={s.carCard}>
       <div className={s.wrapImage}>
-        <button
-          onClick={onToggleFavorite}
-          className={`${s.favoriteButton} ${isFavorite ? s.favorite : ""}`}
-        >
-          <img src={activeSvg} alt="Favorite" />
+        <button onClick={onToggleFavorite} className={s.favoriteButton}>
+          <img src={isFavorite ? activeSvg : inactiveSvg} alt="Favorite" />
         </button>
         <img
           src={car.img}
