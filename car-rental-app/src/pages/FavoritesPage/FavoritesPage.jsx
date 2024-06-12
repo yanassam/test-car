@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import CarCard from "../CarCatalog/CarCard";
 import { selectAdverts } from "../../redux/selectors";
-
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+
+import s from "./FavoritesPage.module.css";
 
 const FavoritesPage = () => {
   const adverts = useSelector(selectAdverts);
@@ -15,7 +16,7 @@ const FavoritesPage = () => {
   return (
     <div>
       <h1>Вибрані автомобілі</h1>
-      <div className="catalog-flex">
+      <div className={s.catalogFlex}>
         {favoriteAdverts.map((car) => (
           <CarCard
             key={car.id}
