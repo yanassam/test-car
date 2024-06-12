@@ -1,18 +1,29 @@
 import PropTypes from "prop-types";
 
 import s from "./CarCard.module.css";
+import activeSvg from "../../image/hart.svg";
 
-const CarCard = ({ car, onLearnMore }) => {
+const CarCard = ({ car, onLearnMore, onToggleFavorite, isFavorite }) => {
   return (
     <div className={s.carCard}>
-      <img
-        src={car.img}
-        alt={`${car.make} ${car.model}`}
-        className={s.carImage}
-      />
+      <div className={s.wrapImage}>
+        <button
+          onClick={onToggleFavorite}
+          className={`${s.favoriteButton} ${isFavorite ? s.favorite : ""}`}
+        >
+          <img src={activeSvg} alt="Favorite" />
+        </button>
+        <img
+          src={car.img}
+          alt={`${car.make} ${car.model}`}
+          className={s.carImage}
+          height="268"
+        />
+      </div>
       <div className={s.carDetails}>
         <h2>
-          {car.make} {car.model}, {car.year}
+          {/* {car.make} {car.model}, {car.year} */}
+          {car.make} <span className={s.carModel}>{car.model}</span>, {car.year}
         </h2>
         <p className={s.carPrice}>{car.rentalPrice}</p>
         <ul>
@@ -36,6 +47,8 @@ const CarCard = ({ car, onLearnMore }) => {
 CarCard.propTypes = {
   car: PropTypes.object.isRequired,
   onLearnMore: PropTypes.func.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 };
 
 export default CarCard;

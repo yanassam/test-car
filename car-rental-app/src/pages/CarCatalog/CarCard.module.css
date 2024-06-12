@@ -66,3 +66,18 @@
 .button:hover {
   background-color: #0056b3;
 }
+
+.favoriteButton{
+  background: transparent;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+}
+
+.wrapImage{ 
+  position: relative;
+}
+
+.favoriteButton.favorite {
+  color: red;
+}
