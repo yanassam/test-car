@@ -1,11 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAdverts } from "../../redux/reducers/advertsReducer";
+import {
+  selectAdverts,
+  selectError,
+  selectStatus,
+} from "../../redux/selectors";
+import CarCard from "./CarCard";
+
+import s from "./CarCatalog.module.css";
 
 const CarCatalog = () => {
   const dispatch = useDispatch();
-  const adverts = useSelector((state) => state.adverts.items);
-  const status = useSelector((state) => state.adverts.status);
+  const adverts = useSelector(selectAdverts);
+  const status = useSelector(selectStatus);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     if (status === "idle") {
@@ -14,23 +23,17 @@ const CarCatalog = () => {
   }, [status, dispatch]);
 
   return (
-    <div>
+    <div className={s.catalogContainer}>
       <h1>Каталог автомобілів</h1>
       {status === "loading" && <p>Загрузка...</p>}
+      {status === "failed" && <p>Ошибка при загрузке данных: {error}</p>}
       {status === "succeeded" && (
-        <ul>
+        <div className={s.catalogFlex}>
           {adverts.map((car) => (
-            <li key={car.id}>
-              <img src={car.img} alt={`${car.make} ${car.model}`} width="100" />
-              <p>
-                {car.make} {car.model}
-              </p>
-              <p>{car.description}</p>
-            </li>
+            <CarCard key={car.id} car={car} />
           ))}
-        </ul>
+        </div>
       )}
-      {status === "failed" && <p>Ошибка при загрузке данных</p>}
     </div>
   );
 };
