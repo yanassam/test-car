@@ -1,60 +1,81 @@
-
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 1000;
 }
 
 .modal {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  position: relative;
+  position: absolute;
+  top: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 541px;
+  height: 752px; 
+  background: #fff;
+  border-radius: 10px;
+  /* padding: 20px; */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   outline: none;
 }
 
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .closeButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  align-self: flex-end;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .carImage {
-  width: 100%;
+  /* width: 100%; */
+  width: 461px;
+  border-radius: 14px;
   height: auto;
+  margin-bottom: 20px;
 }
 
-.learnMoreButton {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: blue;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.carModel {
+  font-weight: bold;
+  color: #007bff;
 }
-.rentalCarButton {
+
+.accessories,
+.rentalConditions {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.accessories span,
+.rentalConditions li {
   display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+.rentalButton {
   margin-top: 20px;
   padding: 10px 20px;
-  background: blue;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  text-align: center;
+  background-color: #007bff;
+  color: #fff;
   text-decoration: none;
-  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+.rentalButton:hover {
+  background-color: #0056b3;
 }

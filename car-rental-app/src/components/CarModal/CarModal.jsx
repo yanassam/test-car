@@ -1,5 +1,8 @@
 import Modal from "react-modal";
+import PropTypes from "prop-types";
 import s from "./CarModal.module.css";
+
+Modal.setAppElement("#root");
 
 const CarModal = ({ isOpen, onClose, car }) => {
   if (!car) return null;
@@ -11,32 +14,55 @@ const CarModal = ({ isOpen, onClose, car }) => {
       className={s.modal}
       overlayClassName={s.overlay}
     >
-      <button className={s.closeButton} onClick={onClose}>
-        &times;
-      </button>
-      <img
-        src={car.img}
-        alt={`${car.make} ${car.model}`}
-        className={s.carImage}
-      />
-      <h2>
-        {car.make} {car.model}, {car.year}
-      </h2>
-      <p>{car.description}</p>
-      <ul>
-        <li>Location: {car.address.split(", ").slice(-2, -1)[0]}</li>
-        <li>Country: {car.address.split(", ").pop()}</li>
-        <li>Company: {car.rentalCompany}</li>
-        <li>Type: {car.type}</li>
-        <li>Model: {car.model}</li>
-        <li>ID: {car.id}</li>
-        <li>Features: {car.functionalities.join(", ")}</li>
-      </ul>
-      <a href="tel:+380730000000" className={s.rentalCarButton}>
-        Rental car
-      </a>
+      <div className={s.modalContent}>
+        <button onClick={onClose} className={s.closeButton}>
+          &times;
+        </button>
+        <img
+          src={car.img}
+          alt={`${car.make} ${car.model}`}
+          className={s.carImage}
+        />
+        <h2>
+          {car.make} <span className={s.carModel}>{car.model}</span>, {car.year}
+        </h2>
+        <p>{car.description}</p>
+        <ul>
+          <li>Fuel Consumption: {car.fuelConsumption}</li>
+          <li>Engine Size: {car.engineSize}</li>
+          <li>Type: {car.type}</li>
+        </ul>
+        <div className={s.accessories}>
+          <h3>Accessories and Functionalities:</h3>
+          {car.accessories.map((acc, index) => (
+            <span key={index}>{acc}</span>
+          ))}
+          {car.functionalities.map((func, index) => (
+            <span key={index}>{func}</span>
+          ))}
+        </div>
+        <div className={s.rentalConditions}>
+          <h3>Rental Conditions:</h3>
+          <ul>
+            {car.rentalConditions.split("\n").map((cond, index) => (
+              <li key={index}>{cond}</li>
+            ))}
+            <li>Mileage: {car.mileage}</li>
+            <li>Price: {car.rentalPrice}</li>
+          </ul>
+        </div>
+        <a href="tel:+380730000000" className={s.rentalButton}>
+          Rental car
+        </a>
+      </div>
     </Modal>
   );
+};
+
+CarModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  car: PropTypes.object,
 };
 
 export default CarModal;
