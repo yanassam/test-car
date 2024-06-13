@@ -23,32 +23,63 @@ const CarModal = ({ isOpen, onClose, car }) => {
           alt={`${car.make} ${car.model}`}
           className={s.carImage}
         />
-        <h2>
+        <h2 className={s.carName}>
           {car.make} <span className={s.carModel}>{car.model}</span>, {car.year}
         </h2>
-        <p>{car.description}</p>
-        <ul>
-          <li>Fuel Consumption: {car.fuelConsumption}</li>
-          <li>Engine Size: {car.engineSize}</li>
-          <li>Type: {car.type}</li>
-        </ul>
-        <div className={s.accessories}>
-          <h3>Accessories and Functionalities:</h3>
-          {car.accessories.map((acc, index) => (
-            <span key={index}>{acc}</span>
-          ))}
-          {car.functionalities.map((func, index) => (
-            <span key={index}>{func}</span>
-          ))}
+        <div className={s.carInfo}>
+          <span>{car.address.split(", ")[1]}</span>
+          <span className={s.verticalDivider}>
+            {car.address.split(", ")[2]}
+          </span>
+          <span className={s.verticalDivider}>Id: {car.id}</span>
+          <span className={s.verticalDivider}>Year: {car.year}</span>
+          <span className={s.verticalDivider}>Type: {car.type}</span>
+          <br />
+          <span className={s.verticalDivider}>
+            Fuel Consumption: {car.fuelConsumption}
+          </span>
+          <span className={s.verticalDivider}>
+            Engine Size: {car.engineSize}
+          </span>
         </div>
+        <p className={s.description}>{car.description}</p>
+
+        <div className={s.accessoriesContainer}>
+          <h3>Accessories and Functionalities:</h3>
+          <div className={s.accessories}>
+            {car.accessories.map((acc, index) => (
+              <span key={index}>{acc}</span>
+            ))}
+            {car.functionalities.map((func, index) => (
+              <span key={index}>{func}</span>
+            ))}
+          </div>
+        </div>
+
         <div className={s.rentalConditions}>
           <h3>Rental Conditions:</h3>
-          <ul>
+          <ul className={s.rentalUL}>
             {car.rentalConditions.split("\n").map((cond, index) => (
-              <li key={index}>{cond}</li>
+              <li key={index}>
+                {cond.includes("Minimum age") ? (
+                  <>
+                    {cond.split(": ")[0]}:{" "}
+                    <span className={s.highlight}>{cond.split(": ")[1]}</span>
+                  </>
+                ) : (
+                  cond
+                )}
+              </li>
             ))}
-            <li>Mileage: {car.mileage}</li>
-            <li>Price: {car.rentalPrice}</li>
+            <li>
+              Mileage: <span className={s.highlight}>{car.mileage}</span>
+            </li>
+            <li>
+              Price:{" "}
+              <span className={s.highlight}>
+                {parseFloat(car.rentalPrice.replace("$", ""))}$
+              </span>
+            </li>
           </ul>
         </div>
         <a href="tel:+380730000000" className={s.rentalButton}>

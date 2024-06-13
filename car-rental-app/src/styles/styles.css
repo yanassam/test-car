@@ -2,5 +2,5 @@
 
 @import "../../node_modules/modern-normalize/modern-normalize.css";
 
-@import "./fonts.css"; /* Импортируем файл со шрифтами */
+@import "./fonts.css"; 
 @import "./colors.css";

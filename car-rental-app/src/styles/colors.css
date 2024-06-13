@@ -1,7 +1,9 @@
 :root {
   --lighting-grey: #8A8A89;
   --black: #121417;
+  --light-black: #363535;
   --light-blue: #3470FF;
+  --dark-white: #f9f9f9;
   /* hover */
 
   --blue: #0B44CD;
