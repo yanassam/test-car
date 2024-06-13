@@ -71,10 +71,10 @@ const CarCatalog = () => {
     }
 
     if (price) {
-      filtered.sort((a, b) => {
-        const priceA = parseFloat(a.rentalPrice.replace("$", ""));
-        const priceB = parseFloat(b.rentalPrice.replace("$", ""));
-        return price === "low" ? priceA - priceB : priceB - priceA;
+      const priceValue = parseFloat(price);
+      filtered = filtered.filter((car) => {
+        const rentalPrice = parseFloat(car.rentalPrice.replace("$", ""));
+        return rentalPrice <= priceValue;
       });
     }
 

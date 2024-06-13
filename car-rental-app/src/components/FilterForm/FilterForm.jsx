@@ -50,8 +50,12 @@ const FilterForm = ({ onFilter }) => {
             <label htmlFor="price">Price / 1 hour</label>
             <Field as="select" name="price" id="price">
               <option value="">To $</option>
-              <option value="low">Low to High</option>
-              <option value="high">High to Low</option>
+              <option value="30">To 30$</option>
+              <option value="40">To 40$</option>
+              <option value="50">To 50$</option>
+              <option value="60">To 60$</option>
+              <option value="70">To 70$</option>
+              <option value="80">To 80$</option>
             </Field>
           </div>
 
