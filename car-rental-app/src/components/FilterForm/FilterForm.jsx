@@ -1,72 +1,95 @@
 import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
+import { useState } from "react";
+
 import s from "./FilterForm.module.css";
 
-const FilterSchema = Yup.object().shape({
-  brand: Yup.string(),
-  price: Yup.string(),
-  mileageFrom: Yup.number().min(0, "Mileage must be at least 0").nullable(),
-  mileageTo: Yup.number().min(0, "Mileage must be at least 0").nullable(),
-});
+const generateMileageOptions = (start, end, step) => {
+  const options = [];
+  for (let i = start; i <= end; i += step) {
+    options.push(i);
+  }
+  return options;
+};
 
 const FilterForm = ({ onFilter }) => {
+  const mileageOptions = generateMileageOptions(3000, 10000, 500);
+  const [mileageFrom, setMileageFrom] = useState(3000);
+
   return (
     <Formik
       initialValues={{
         brand: "",
         price: "",
-        mileageFrom: "",
-        mileageTo: "",
+        mileageFrom: "3000",
+        mileageTo: "5500",
       }}
-      validationSchema={FilterSchema}
       onSubmit={(values) => {
         onFilter(values);
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values, setFieldValue }) => (
         <Form className={s.filterForm}>
-          <Field as="select" name="brand" className={s.selectField}>
-            <option value="">Car brand</option>
-            <option value="Buick">Buick</option>
-            <option value="Volvo">Volvo</option>
-            <option value="Hummer">Hummer</option>
-            <option value="Subaru">Subaru</option>
-            <option value="Mitsubishi">Mitsubishi</option>
-            <option value="Nissan">Nissan</option>
-            <option value="Lincoln">Lincoln</option>
-            <option value="GMC">GMC</option>
-            <option value="Hyundai">Hyundai</option>
-          </Field>
-          {errors.brand && touched.brand ? <div>{errors.brand}</div> : null}
+          <div className={s.fieldContainer}>
+            <label htmlFor="brand">Car brand</label>
+            <Field as="select" name="brand" id="brand">
+              <option value="">Enter the text</option>
+              <option value="Buick">Buick</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Hummer">Hummer</option>
+              <option value="Subaru">Subaru</option>
+              <option value="Mitsubishi">Mitsubishi</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Lincoln">Lincoln</option>
+              <option value="GMC">GMC</option>
+              <option value="Hyundai">Hyundai</option>
+            </Field>
+          </div>
 
-          <Field as="select" name="price" className={s.selectField}>
-            <option value="">Price / 1 hour</option>
-            <option value="low">Low to High</option>
-            <option value="high">High to Low</option>
-          </Field>
-          {errors.price && touched.price ? <div>{errors.price}</div> : null}
+          <div className={s.fieldContainer}>
+            <label htmlFor="price">Price / 1 hour</label>
+            <Field as="select" name="price" id="price">
+              <option value="">To $</option>
+              <option value="low">Low to High</option>
+              <option value="high">High to Low</option>
+            </Field>
+          </div>
 
-          <Field
-            name="mileageFrom"
-            type="number"
-            placeholder="From"
-            className={s.inputField}
-          />
-          {errors.mileageFrom && touched.mileageFrom ? (
-            <div>{errors.mileageFrom}</div>
-          ) : null}
+          <div className={s.mileage}>
+            <label>Car mileage / km</label>
+            <div className={s.mileageInputs}>
+              <Field
+                as="select"
+                name="mileageFrom"
+                value={values.mileageFrom}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  setMileageFrom(value);
+                  setFieldValue("mileageFrom", value);
+                  setFieldValue(
+                    "mileageTo",
+                    Math.max(value + 500, values.mileageTo)
+                  );
+                }}
+              >
+                {mileageOptions.map((option) => (
+                  <option key={option} value={option}>
+                    From {option}
+                  </option>
+                ))}
+              </Field>
+              <Field as="select" name="mileageTo" value={values.mileageTo}>
+                {mileageOptions
+                  .filter((option) => option > mileageFrom)
+                  .map((option) => (
+                    <option key={option} value={option}>
+                      To {option}
+                    </option>
+                  ))}
+              </Field>
+            </div>
+          </div>
 
-          <Field
-            name="mileageTo"
-            type="number"
-            placeholder="To"
-            className={s.inputField}
-          />
-          {errors.mileageTo && touched.mileageTo ? (
-            <div>{errors.mileageTo}</div>
-          ) : null}
-
-          <button type="submit" className={s.searchButton}>
+          <button type="submit" className={s.button}>
             Search
           </button>
         </Form>

@@ -1,24 +1,50 @@
 .filterForm {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.selectField, .inputField {
+.filterForm select,
+.filterForm input {
   padding: 5px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-.searchButton {
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldContainer label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mileage {
+  display: flex;
+  flex-direction: column;
+}
+
+.mileageInputs {
+  display: flex;
+  gap: 5px;
+}
+
+.mileageInputs select {
+  width: 120px;
+}
+
+.button {
   padding: 10px 20px;
-  font-size: 16px;
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
-  cursor: pointer;
   border-radius: 5px;
+  cursor: pointer;
 }
 
-.searchButton:hover {
+.button:hover {
   background-color: #0056b3;
 }
