@@ -21,9 +21,10 @@ const FilterForm = ({ onFilter }) => {
         brand: "",
         price: "",
         mileageFrom: "3000",
-        mileageTo: "5500",
+        mileageTo: "10000",
       }}
       onSubmit={(values) => {
+        console.log("Filter values submitted:", values);
         onFilter(values);
       }}
     >

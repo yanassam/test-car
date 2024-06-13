@@ -58,15 +58,16 @@ const CarCatalog = () => {
         : [...prevFavorites, carId]
     );
   };
+
   const handleFilter = (values) => {
     const { brand, price, mileageFrom, mileageTo } = values;
 
-    let filtered = [...adverts];
+    let filtered = adverts.slice();
 
     if (brand) {
-      filtered = filtered.filter((car) =>
-        car.make.toLowerCase().includes(brand.toLowerCase())
-      );
+      filtered = filtered.filter((car) => {
+        return car.make.toLowerCase() === brand.toLowerCase();
+      });
     }
 
     if (price) {
@@ -85,6 +86,7 @@ const CarCatalog = () => {
         return true;
       });
     }
+
     setFilteredAdverts(filtered);
   };
 
