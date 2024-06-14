@@ -2,14 +2,22 @@
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: blue;
-  color: white;
+ 
+ 
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+
+background: none;
+font-weight: 500;
+font-size: 16px;
+line-height: 1.5;
+text-decoration: underline;
+text-decoration-skip-ink: none;
+color: var( --light-blue);
 }
 
 .button:hover {
-  background-color: darkblue;
+  color: var( --blue);
 }

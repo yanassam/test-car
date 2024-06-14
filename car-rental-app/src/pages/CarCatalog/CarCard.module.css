@@ -1,28 +1,38 @@
-.carCard{
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
+.carCard{ 
+ 
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
-  width: 250px; 
-  margin: 10px; 
+  width: 274px;
+
+}
+.carName { 
+font-weight: 500;
+font-size: 16px;
+line-height: 1.5;
+color: var(--black);
+}
+
+.carModel {
+  color: var(--light-blue);
 }
 
 .carCard:hover {
   transform: scale(1.05);
 }
+.carImageWrap{
+  overflow: hidden;
+  border-radius: 14px;
 
-.carImage {
+}
+.carImage { 
   width: 100%;
-  height: auto;
+
+  object-fit: cover;
 }
 
-.carDetails {
-  padding: 15px;
-}
 
 .carDetails h2 {
-  font-size: 18px;
+  /* font-size: 18px; */
   margin: 0 0 10px 0;
 }
 
@@ -32,39 +42,53 @@
   color: #333;
   margin: 10px 0;
 }
+.title{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
 
 .carDetails ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin-bottom: 28px;
   display: flex;
   flex-wrap: wrap;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
 }
-
 .carDetails ul li {
-  font-size: 14px;
-  color: #666;
-  margin-right: 10px;
-  margin-bottom: 5px;
+  font-weight: 400;
+ font-size: 12px;
+ line-height: 1.5; 
+  color: var(--grey);
+  margin-right: 6px;
+  position: relative;
 }
-
+.carDetails ul li:not(:first-child):not(:nth-child(5))::before {
+  content: '|';
+  margin-right: 6px;
+  color: var(--grey);
+}
 .button {
+  border-radius: 12px; 
+  width: 274px;
+  height: 44px;
   display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  width: 100%;  
+  background-color: var( --light-blue);
   color: #fff;
   border: none;
-  border-radius: 5px;
+  line-height: 1.42857;
   font-size: 16px;
   text-align: center;
-  cursor: pointer;
-  margin-top: 10px;
+  cursor: pointer;  
   transition: background-color 0.2s ease-in-out;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color:var( --blue);
 }
 
 .favoriteButton{
@@ -72,10 +96,12 @@
     position: absolute;
     right: 14px;
     top: 14px;
+    border: none;
 }
 
 .wrapImage{ 
   position: relative;
+  margin-bottom: 14px;
 }
 
 

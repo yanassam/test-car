@@ -17,9 +17,6 @@ const CarModal = ({ isOpen, onClose, car }) => {
       overlayClassName={s.overlay}
     >
       <div className={s.modalContent}>
-        {/* <button onClick={onClose} className={s.closeButton}>
-          <img src={close} alt="Favorite" />
-        </button> */}
         <div onClick={onClose}>
           <img
             src={close}

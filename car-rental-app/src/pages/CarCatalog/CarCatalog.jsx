@@ -5,7 +5,9 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 import {
   selectAdverts,
+  selectCurrentPage,
   selectError,
+  selectHasNextPage,
   selectStatus,
 } from "../../redux/selectors";
 import CarCard from "./CarCard";
@@ -18,12 +20,15 @@ import s from "./CarCatalog.module.css";
 const CarCatalog = () => {
   const dispatch = useDispatch();
   const adverts = useSelector(selectAdverts);
+  const currentPage = useSelector(selectCurrentPage);
   const status = useSelector(selectStatus);
   const error = useSelector(selectError);
+  const hasNextPage = useSelector(selectHasNextPage);
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(12);
+  // const [visibleCount, setVisibleCount] = useState(12);
+
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
   const [filteredAdverts, setFilteredAdverts] = useState([]);
 
@@ -48,7 +53,7 @@ const CarCatalog = () => {
   };
 
   const loadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 12);
+    dispatch(fetchAdverts(currentPage));
   };
 
   const toggleFavorite = (carId) => {
@@ -99,7 +104,7 @@ const CarCatalog = () => {
       {status === "succeeded" && (
         <>
           <div className={s.catalogFlex}>
-            {filteredAdverts.slice(0, visibleCount).map((car) => (
+            {filteredAdverts.map((car) => (
               <CarCard
                 key={car.id}
                 car={car}
@@ -109,9 +114,9 @@ const CarCatalog = () => {
               />
             ))}
           </div>
-          {visibleCount < filteredAdverts.length && (
-            <LoadMoreBtn onLoadMore={loadMore} />
-          )}
+
+          <LoadMoreBtn onLoadMore={loadMore} />
+          {/* {hasNextPage && <LoadMoreBtn onLoadMore={loadMore} />} */}
           <CarModal
             isOpen={isModalOpen}
             onClose={closeModal}

@@ -11,19 +11,25 @@ const CarCard = ({ car, onLearnMore, onToggleFavorite, isFavorite }) => {
         <button onClick={onToggleFavorite} className={s.favoriteButton}>
           <img src={isFavorite ? activeSvg : inactiveSvg} alt="Favorite" />
         </button>
-        <img
-          src={car.img}
-          alt={`${car.make} ${car.model}`}
-          className={s.carImage}
-          height="268"
-        />
+        <div className={s.carImageWrap}>
+          {" "}
+          <img
+            src={car.img}
+            alt={`${car.make} ${car.model}`}
+            className={s.carImage}
+            height="268"
+          />
+        </div>
       </div>
       <div className={s.carDetails}>
-        <h2>
-          {/* {car.make} {car.model}, {car.year} */}
-          {car.make} <span className={s.carModel}>{car.model}</span>, {car.year}
-        </h2>
-        <p className={s.carPrice}>{car.rentalPrice}</p>
+        <div className={s.title}>
+          <p>
+            {" "}
+            {car.make} <span className={s.carModel}>{car.model}</span>,{" "}
+            {car.year}
+          </p>
+          <p>{car.rentalPrice}</p>
+        </div>
         <ul>
           <li>{car.address.split(", ")[car.address.split(", ").length - 2]}</li>
           <li>{car.address.split(", ").pop()}</li>
