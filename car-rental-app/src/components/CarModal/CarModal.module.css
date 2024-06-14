@@ -1,3 +1,5 @@
+
+
 .overlay {
   position: fixed;
   top: 0;
@@ -14,8 +16,8 @@
   left: 50%;
   transform: translateX(-50%);
   width: 541px;
-   background: #fff;
-  border-radius: 10px; 
+  background: #fff;
+  border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   outline: none;
 }
@@ -23,70 +25,74 @@
 .modalContent {
   display: flex;
   flex-direction: column;
-padding: 20px 40px;
+  padding: 40px 40px;
+  position: relative;
 }
 
-.closeButton {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: px;
+.closeIcon {
+  position: fixed;
+  top: 16px;
+  right: 16px;
   cursor: pointer;
 }
 
 .carImage {
   width: 461px;
   border-radius: 14px;
-  height: auto; 
+  height: auto;
   margin-bottom: 14px;
 }
 
-.carName{
+.carName {
   font-weight: 500;
- font-size: 18px;
- line-height: 1.33333;
- margin-bottom: 8px
+  font-size: 18px;
+  line-height: 1.33333;
+  margin-bottom: 8px;
 }
 
 .carModel {
-  color: var(--light-blue);  
+  color: var(--light-blue);
 }
-.description{
-font-weight: 400;
-font-size: 14px;
-line-height: 1.42857;
-margin-bottom: 24px;
+
+.description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42857;
+  margin-bottom: 24px;
 }
 
 .carInfo {
   /* display: flex; */
-  flex-wrap: wrap;   
+  flex-wrap: wrap;
   margin-bottom: 16px;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  color: var(--lighting-grey); 
+  color: var(--lighting-grey);
 }
 
 .carInfo span {
-  margin-right: 10px;
-}
-.vertical-divider::before {
-  content: "|";
-  margin: 0 10px;
-  color: var(--lighting-grey);
-  
+  margin-right: 6px;
 }
 
-.rentalConditions{
+.carInfo span:not(:first-child)::before {
+  content: "|";
+  margin-right: 10px;
+  color: var(--lighting-grey);
+}
+.carInfo span:nth-child(7)::before {
+  display: none;
+}
+.rentalConditions {
   margin-bottom: 24px;
 }
+
 .accessoriesContainer h3,
-.rentalConditions h3{
-font-weight: 500;
-font-size: 14px;
-line-height: 1.42857;
-margin-bottom: 8px;
+.rentalConditions h3 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.42857;
+  margin-bottom: 8px;
 }
 
 .accessoriesContainer {
@@ -98,7 +104,6 @@ margin-bottom: 8px;
   flex-wrap: wrap;
   margin-top: 10px;
   width: 420px;
- 
 }
 
 .accessories span {
@@ -113,7 +118,7 @@ margin-bottom: 8px;
 .accessories span:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: -5px; 
+  right: -5px;
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
@@ -121,10 +126,11 @@ margin-bottom: 8px;
   background-color: rgba(18, 20, 23, 0.2);
 }
 
-.accessories span:nth-child(3)::after, 
-.accessories span:nth-child(6)::after { 
+.accessories span:nth-child(3)::after,
+.accessories span:nth-child(6)::after {
   display: none;
 }
+
 .rentalConditions li {
   display: inline-block;
   margin-right: 8px;
@@ -132,31 +138,30 @@ margin-bottom: 8px;
   padding: 7px 14px;
   background: var(--dark-white);
   border-radius: 35px;
-
-
-font-weight: 400;
-font-size: 12px;
-line-height: 1.5;
-letter-spacing: -0.02em;
-color: var(--light-black);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--light-black);
 }
 
-.rentalUL{
-font-weight: 400;
-font-size: 12px;
-line-height: 1.5;
-color: var(--light-black);
+.rentalUL {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--light-black);
 }
-.rentalButton { 
+
+.rentalButton {
   background-color: var(--light-blue);
   border-radius: 12px;
   padding: 12px 50px;
   width: 168px;
   height: 44px;
   color: #fff;
-  text-decoration: none; 
+  text-decoration: none;
   text-align: center;
-  display: inline-block;  
+  display: inline-block;
   font-size: 14px;
   line-height: 1.42857;
 }
@@ -164,6 +169,7 @@ color: var(--light-black);
 .rentalButton:hover {
   background-color: var(--blue);
 }
-.highlight{
-  color: var( --light-blue);
+
+.highlight {
+  color: var(--light-blue);
 }

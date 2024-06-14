@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import PropTypes from "prop-types";
+
+import close from "../../image/close.svg";
 import s from "./CarModal.module.css";
 
 Modal.setAppElement("#root");
@@ -15,9 +17,18 @@ const CarModal = ({ isOpen, onClose, car }) => {
       overlayClassName={s.overlay}
     >
       <div className={s.modalContent}>
-        <button onClick={onClose} className={s.closeButton}>
-          &times;
-        </button>
+        {/* <button onClick={onClose} className={s.closeButton}>
+          <img src={close} alt="Favorite" />
+        </button> */}
+        <div onClick={onClose}>
+          <img
+            src={close}
+            alt="close"
+            width="24"
+            height="24"
+            className={s.closeIcon}
+          />
+        </div>
         <img
           src={car.img}
           alt={`${car.make} ${car.model}`}
