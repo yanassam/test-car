@@ -1,5 +1,6 @@
 .catalogContainer { 
   margin: 0 auto;
+  text-align: center;
 }
 
 .catalogFlex {
@@ -7,4 +8,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 29px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }

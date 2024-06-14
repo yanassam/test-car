@@ -59,7 +59,7 @@ const FilterForm = ({ onFilter }) => {
             </Field>
           </div>
 
-          <div className={s.mileage}>
+          <div className={s.fieldContainer}>
             <label>Car mileage / km</label>
             <div className={s.mileageInputs}>
               <Field

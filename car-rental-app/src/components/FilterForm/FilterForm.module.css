@@ -1,8 +1,8 @@
 .filterForm {
-  display: flex;
-  gap: 10px;
+  display:inline-flex;
+  gap: 18px;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .filterForm select,
@@ -17,34 +17,80 @@
 }
 
 .fieldContainer label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: bold;
+  margin-bottom: 8px;
+ font-weight: 500;
+ font-size: 14px;
+ line-height: 1.2;
+ color: var(--lighting-grey);
+ text-align: start;
 }
 
+.fieldContainer select{
+  border-radius: 14px;
+  border: none;
+  padding: 14px 89px 14px 18px;
+  width: 224px;
+  height: 48px;
+  background:var(--white-smoke);   
+  background-size: 20px 20px;
+}
+.fieldContainer select:focus {
+  outline: none; 
+}
+
+.fieldContainer option{
+  border: 1px solid rgba(18, 20, 23, 0.05);
+  border-radius: 14px;
+  width: 224px;
+  height: 272px;
+  box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(18, 20, 23, 0.2);
+
+}
 .mileage {
   display: flex;
   flex-direction: column;
+  font-weight: 500;
+font-size: 14px;
+line-height: 1.28571;
 }
 
 .mileageInputs {
-  display: flex;
-  gap: 5px;
+  display: flex; 
 }
 
 .mileageInputs select {
   width: 120px;
+  border: none;
+  border-radius: 14px 0 0 14px;
 }
 
-.button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.mileageInputs select:first-child {
+  border-radius: 14px 0 0 14px; 
+  border-right: 1px solid var(--white-smoke); 
 }
+
+.mileageInputs select:last-child {
+  border-radius: 0 14px 14px 0;
+  border-left: 1px solid var(--white-smoke); 
+}
+.button {
+  border-radius: 12px;
+  border: none;
+  padding: 14px 44px;
+  width: 136px;
+  height: 48px;
+  cursor: pointer;
+  background:var(--light-blue);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #fff;
+  transition: background-color 0.2s ease-in-out;}
 
 .button:hover {
-  background-color: #0056b3;
+  background:var(--blue);
 }

@@ -97,7 +97,6 @@ const CarCatalog = () => {
 
   return (
     <div className={s.catalogContainer}>
-      <h1>Каталог автомобілів</h1>
       <FilterForm onFilter={handleFilter} />
       {status === "loading" && <p>Загрузка...</p>}
       {status === "failed" && <p>Ошибка при загрузке данных: {error}</p>}
