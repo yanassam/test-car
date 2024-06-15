@@ -1,5 +1,3 @@
-
-
 .overlay {
   position: fixed;
   top: 0;
@@ -8,11 +6,13 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal {
-  position: absolute;
-  top: 50px; 
+  position: absolute;  
   left: 50%;
   transform: translateX(-50%);
   width: 541px;
@@ -40,7 +40,7 @@
   width: 461px;
   border-radius: 14px;
   height: auto;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .carName {
@@ -58,13 +58,12 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.42857;
-  margin-bottom: 24px;
+  margin-bottom: 13px;
 }
 
 .carInfo {
-  /* display: flex; */
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  margin-bottom: 13px;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
@@ -84,7 +83,7 @@
   display: none;
 }
 .rentalConditions {
-  margin-bottom: 24px;
+  margin-bottom: 13px;
 }
 
 .accessoriesContainer h3,
@@ -96,41 +95,14 @@
 }
 
 .accessoriesContainer {
-  margin-bottom: 24px;
+  margin-bottom: 13px;
 }
-
-/* .accessories {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  width: 420px;
-}
-
-.accessories span {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.5;
-  margin-right: 10px;
-  color: rgba(18, 20, 23, 0.5);
-  position: relative;
-}
-
-.accessories span:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 1.2em;
-  background-color: rgba(18, 20, 23, 0.2);
-} */
 
 .accessories {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
-  width: 420px;
+  width: 447px;
 }
 
 .accessories span {
@@ -148,15 +120,14 @@
   color: rgba(18, 20, 23, 0.5);
 }
 .accessories span:nth-child(4)::before ,
-.accessories span:nth-child(7)::before  {
+.accessories span:nth-child(6)::before  {
   display: none;
 }
 
 .rentalConditions li {
   display: inline-block;
   margin-right: 8px;
-  margin-bottom: 8px;
-  padding: 7px 14px;
+  padding: 4px 14px;
   background: var(--dark-white);
   border-radius: 35px;
   font-weight: 400;

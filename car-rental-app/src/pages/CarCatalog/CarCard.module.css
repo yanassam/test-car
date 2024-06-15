@@ -1,9 +1,11 @@
-.carCard{ 
- 
+.carCard{  
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
   width: 274px;
-
+  height: 438px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .carName { 
 font-weight: 500;
@@ -22,7 +24,6 @@ color: var(--black);
 .carImageWrap{
   overflow: hidden;
   border-radius: 14px;
-
 }
 .carImage { 
   width: 100%;
