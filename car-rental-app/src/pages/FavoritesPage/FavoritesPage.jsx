@@ -14,8 +14,8 @@ const FavoritesPage = () => {
   );
 
   return (
-    <div>
-      <h1>Вибрані автомобілі</h1>
+    <div className="page">
+      <h1 className={s.title}>Ви обрали ці авто</h1>
       <div className={s.catalogFlex}>
         {favoriteAdverts.map((car) => (
           <CarCard

@@ -1,0 +1,26 @@
+.homePage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-size:  contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color:  rgb(241, 241, 61);
+  text-align: center;  
+  padding: 20px;
+}
+
+.homePage h1{
+  color: var(--blue);
+  text-align: center;
+  margin: 20px 0 40px 0;
+}
+
+.homePage p{
+  color: var(--light-blue); 
+  text-align: center;
+  font-size: 25px;
+  margin: 20px 0 40px 0;
+}

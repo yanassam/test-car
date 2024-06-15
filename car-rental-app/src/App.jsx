@@ -22,16 +22,18 @@ const App = () => {
             <Link to="/catalog">Каталог</Link>
           </li>
           <li>
-            <Link to="/favorites">Избранні</Link>
+            <Link to="/favorites">Улюблені</Link>
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/catalog" element={<CarCatalog />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CarCatalog />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
     </Router>
   );
 };

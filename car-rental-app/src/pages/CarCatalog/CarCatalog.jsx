@@ -96,33 +96,35 @@ const CarCatalog = () => {
   };
 
   return (
-    <div className={s.catalogContainer}>
-      <FilterForm onFilter={handleFilter} />
-      {status === "loading" && <p>Загрузка...</p>}
-      {status === "failed" && <p>Ошибка при загрузке данных: {error}</p>}
-      {status === "succeeded" && (
-        <>
-          <div className={s.catalogFlex}>
-            {filteredAdverts.map((car) => (
-              <CarCard
-                key={car.id}
-                car={car}
-                onLearnMore={() => openModal(car)}
-                onToggleFavorite={() => toggleFavorite(car.id)}
-                isFavorite={favorites.includes(car.id)}
-              />
-            ))}
-          </div>
+    <div className="page">
+      <div className={s.catalogContainer}>
+        <FilterForm onFilter={handleFilter} />
+        {status === "loading" && <p>Загрузка...</p>}
+        {status === "failed" && <p>Ошибка при загрузке данных: {error}</p>}
+        {status === "succeeded" && (
+          <>
+            <div className={s.catalogFlex}>
+              {filteredAdverts.map((car) => (
+                <CarCard
+                  key={car.id}
+                  car={car}
+                  onLearnMore={() => openModal(car)}
+                  onToggleFavorite={() => toggleFavorite(car.id)}
+                  isFavorite={favorites.includes(car.id)}
+                />
+              ))}
+            </div>
 
-          <LoadMoreBtn onLoadMore={loadMore} />
-          {/* {hasNextPage && <LoadMoreBtn onLoadMore={loadMore} />} */}
-          <CarModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            car={selectedCar}
-          />
-        </>
-      )}
+            <LoadMoreBtn onLoadMore={loadMore} />
+            {/* {hasNextPage && <LoadMoreBtn onLoadMore={loadMore} />} */}
+            <CarModal
+              isOpen={isModalOpen}
+              onClose={closeModal}
+              car={selectedCar}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };
