@@ -60,12 +60,6 @@ nav a:hover {
   color: var(--blue);
 }
 
-.container {
-  padding-top: 90px; 
-  
-}
-
-
 .page {
   max-width: 1280px;
   margin: 0 auto;

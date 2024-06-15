@@ -9,31 +9,21 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import CarCatalog from "./pages/CarCatalog/CarCatalog";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import Navigation from "./components/Navigation/Navigation";
+import Container from "./components/Container/Container";
 
 const App = () => {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Домашня</Link>
-          </li>
-          <li>
-            <Link to="/catalog">Каталог</Link>
-          </li>
-          <li>
-            <Link to="/favorites">Улюблені</Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="container">
+      <Navigation />
+      <Container>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CarCatalog />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </div>
+      </Container>
     </Router>
   );
 };
