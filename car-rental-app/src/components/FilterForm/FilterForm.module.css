@@ -54,8 +54,8 @@
   display: flex;
   flex-direction: column;
   font-weight: 500;
-font-size: 14px;
-line-height: 1.28571;
+  font-size: 14px;
+  line-height: 1.28571;
 }
 
 .mileageInputs {
@@ -88,7 +88,7 @@ line-height: 1.28571;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.42857;
-  color: #fff;
+  color: var(--white);
   transition: background-color 0.2s ease-in-out;}
 
 .button:hover {

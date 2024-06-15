@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import s from "./FilterForm.module.css";
 
@@ -15,6 +15,14 @@ const generateMileageOptions = (start, end, step) => {
 const FilterForm = ({ onFilter }) => {
   const mileageOptions = generateMileageOptions(3000, 10000, 500);
   const [mileageFrom, setMileageFrom] = useState(3000);
+  const [makes, setMakes] = useState([]);
+
+  useEffect(() => {
+    fetch("/makes.json")
+      .then((response) => response.json())
+      .then((data) => setMakes(data))
+      .catch((error) => console.error("Error loading makes:", error));
+  }, []);
 
   return (
     <Formik
@@ -35,28 +43,11 @@ const FilterForm = ({ onFilter }) => {
             <label htmlFor="brand">Car brand</label>
             <Field as="select" name="brand" id="brand">
               <option value="">Enter the text</option>
-              <option value="Buick">Buick</option>
-              <option value="Volvo">Volvo</option>
-              <option value="Hummer">Hummer</option>
-              <option value="Subaru">Subaru</option>
-              <option value="Mitsubishi">Mitsubishi</option>
-              <option value="Nissan">Nissan</option>
-              <option value="Lincoln">Lincoln</option>
-              <option value="GMC">GMC</option>
-              <option value="Hyundai">Hyundai</option>
-              <option value="Toyota">Toyota</option>
-              <option value="MINI">MINI</option>
-              <option value="Bentley">Bentley</option>
-              <option value="Mercedes-Benz">Mercedes-Benz</option>
-              <option value="Aston Martin">Aston Martin</option>
-              <option value="Pontiac">Pontiac</option>
-              <option value="Lamborghini">Lamborghini</option>
-              <option value="Audi">Audi</option>
-              <option value="BMW">BMW</option>
-              <option value="Chevrolet">Chevrolet</option>
-              <option value="Chrysler">Chrysler</option>
-              <option value="Kia">Kia</option>
-              <option value="Rover">Rover</option>
+              {makes.map((make) => (
+                <option key={make} value={make}>
+                  {make}
+                </option>
+              ))}
             </Field>
           </div>
 
