@@ -43,6 +43,19 @@ const FilterForm = ({ onFilter }) => {
               <option value="Lincoln">Lincoln</option>
               <option value="GMC">GMC</option>
               <option value="Hyundai">Hyundai</option>
+              <option value="Toyota">Toyota</option>
+              <option value="MINI">MINI</option>
+              <option value="Bentley">Bentley</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="Aston Martin">Aston Martin</option>
+              <option value="Pontiac">Pontiac</option>
+              <option value="Lamborghini">Lamborghini</option>
+              <option value="Audi">Audi</option>
+              <option value="BMW">BMW</option>
+              <option value="Chevrolet">Chevrolet</option>
+              <option value="Chrysler">Chrysler</option>
+              <option value="Kia">Kia</option>
+              <option value="Rover">Rover</option>
             </Field>
           </div>
 

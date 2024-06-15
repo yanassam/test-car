@@ -5,6 +5,7 @@ import activeSvg from "../../image/active.svg";
 import inactiveSvg from "../../image/hart.svg";
 
 const CarCard = ({ car, onLearnMore, onToggleFavorite, isFavorite }) => {
+  
   return (
     <div className={s.carCard}>
       <div className={s.wrapImage}>

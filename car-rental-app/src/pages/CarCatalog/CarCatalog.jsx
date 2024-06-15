@@ -27,7 +27,6 @@ const CarCatalog = () => {
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
-  // const [visibleCount, setVisibleCount] = useState(12);
 
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
   const [filteredAdverts, setFilteredAdverts] = useState([]);
@@ -117,6 +116,7 @@ const CarCatalog = () => {
 
             <LoadMoreBtn onLoadMore={loadMore} />
             {/* {hasNextPage && <LoadMoreBtn onLoadMore={loadMore} />} */}
+
             <CarModal
               isOpen={isModalOpen}
               onClose={closeModal}
