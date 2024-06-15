@@ -6,8 +6,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import {
   selectAdverts,
   selectCurrentPage,
-  selectError,
-  selectHasNextPage,
+  selectError,  
   selectStatus,
 } from "../../redux/selectors";
 import CarCard from "./CarCard";
@@ -23,7 +22,7 @@ const CarCatalog = () => {
   const currentPage = useSelector(selectCurrentPage);
   const status = useSelector(selectStatus);
   const error = useSelector(selectError);
-  const hasNextPage = useSelector(selectHasNextPage);
+
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);

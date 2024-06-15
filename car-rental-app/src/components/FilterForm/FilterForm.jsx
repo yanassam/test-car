@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
 
@@ -28,7 +29,7 @@ const FilterForm = ({ onFilter }) => {
         onFilter(values);
       }}
     >
-      {({ errors, touched, values, setFieldValue }) => (
+      {({ values, setFieldValue }) => (
         <Form className={s.filterForm}>
           <div className={s.fieldContainer}>
             <label htmlFor="brand">Car brand</label>
@@ -118,4 +119,7 @@ const FilterForm = ({ onFilter }) => {
   );
 };
 
+FilterForm.propTypes = {
+  onFilter: PropTypes.func.isRequired,
+};
 export default FilterForm;
