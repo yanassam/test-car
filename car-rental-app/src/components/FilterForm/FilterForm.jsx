@@ -76,13 +76,15 @@ const FilterForm = ({ onFilter }) => {
                   );
                 }}
               >
+                <option value="">From</option>
                 {mileageOptions.map((option) => (
                   <option key={option} value={option}>
-                    From {option}
+                    {option}
                   </option>
                 ))}
               </Field>
               <Field as="select" name="mileageTo" value={values.mileageTo}>
+                <option value="">To</option>
                 {mileageOptions
                   .filter((option) => option > mileageFrom)
                   .map((option) => (

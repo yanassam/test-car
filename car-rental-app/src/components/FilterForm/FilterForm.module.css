@@ -28,7 +28,7 @@
 .fieldContainer select{
   border-radius: 14px;
   border: none;
-  padding: 14px 89px 14px 18px;
+  padding: 14px  18px;
   width: 224px;
   height: 48px;
   background:var(--white-smoke);   
@@ -63,7 +63,7 @@ line-height: 1.28571;
 }
 
 .mileageInputs select {
-  width: 120px;
+  width: 160px;
   border: none;
   border-radius: 14px 0 0 14px;
 }

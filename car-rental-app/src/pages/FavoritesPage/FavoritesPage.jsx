@@ -4,14 +4,36 @@ import { selectAdverts } from "../../redux/selectors";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 import s from "./FavoritesPage.module.css";
+import { useState } from "react";
+import CarModal from "../../components/CarModal/CarModal";
 
 const FavoritesPage = () => {
   const adverts = useSelector(selectAdverts);
-  const [favorites] = useLocalStorage("favorites", []);
+  const [favorites, setFavorites] = useLocalStorage("favorites", []);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
 
   const favoriteAdverts = adverts.filter((advert) =>
     favorites.includes(advert.id)
   );
+
+  const openModal = (car) => {
+    setSelectedCar(car);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedCar(null);
+  };
+
+  const toggleFavorite = (carId) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.includes(carId)
+        ? prevFavorites.filter((id) => id !== carId)
+        : [...prevFavorites, carId]
+    );
+  };
 
   return (
     <div className="page">
@@ -22,11 +44,12 @@ const FavoritesPage = () => {
             key={car.id}
             car={car}
             isFavorite={favorites.includes(car.id)}
-            onToggleFavorite={() => {}}
-            onLearnMore={() => {}}
+            onToggleFavorite={() => toggleFavorite(car.id)}
+            onLearnMore={() => openModal(car)}
           />
         ))}
       </div>
+      <CarModal isOpen={isModalOpen} onClose={closeModal} car={selectedCar} />
     </div>
   );
 };
